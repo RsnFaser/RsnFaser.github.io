@@ -14,15 +14,15 @@ Game.prototype = {
 
 		this.eventsHandler();	
 		
-		this.howToPlay();
+		this.intro();
 		
 		$('nav a:first').addClass('current');
 	},
 
-	howToPlay: function() {
+	intro: function() {
 		var isFirstTime = localStorage.getItem('isYourFirstTime');
 		if(!isFirstTime) {
-			this.lightboxInit('#howToPlay', false);
+			this.lightboxInit('#intro', false);
 			localStorage.setItem('isYourFirstTime', false);	
 		}
 	},
@@ -68,7 +68,7 @@ Game.prototype = {
 				me.teleport($(window).width() / 2 - me.player.width() / 2, 100);
 				return;
 			}
-			else if(target == '#howToPlay') {
+			else if(target == '#intro') {
 				me.lightboxInit(target, false);
 				return;
 			}
