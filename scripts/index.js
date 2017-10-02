@@ -452,28 +452,5 @@ Game.prototype = {
 				scrollTop: me.topPos - 570
 			});
 		});
-	},
-	putFlowers: function() {
-		var me = this;
-		var height = $("#mainFloor").height();
-		var width = $(window).width();
-		for(var i = 0; i < 20; i++) {
-			var x = Math.floor((Math.random() * width) + 1);
-			var y = Math.floor((Math.random() * height) + 1);
-			var canIput = [];
-			canIput.push(me.isRoad(x, y));
-			canIput.push(me.inHouse(x, y) != '' ?  me.inHouse(x, y) : true);
-			if(canIput.indexOf(false) >= 0) {
-				$('<div class="flowers"></div>').appendTo('#mainFloor').css({
-					top: y,
-					left: x
-				});
-			}
-			else {
-				i--;
-			}
-		}
-
 	}
-
 }
