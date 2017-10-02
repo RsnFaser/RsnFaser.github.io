@@ -1,13 +1,13 @@
-var houses = [
+var pohs = [
 {
-		name: 'About me Interface',
+		name: 'About House',
 		id: '#aboutUsHouse',
 		width: 250,
 		height: 100,
 		top: 300,
 		left: 575,
 		right: null,
-		door: {
+		enter: {
 			width: 36,
 			height: 39,
 			bottom: 0,
@@ -15,14 +15,14 @@ var houses = [
 		}
 	},
 	{
-		name: 'Skills Interface',
+		name: 'Skills House',
 		id: '#skillsHouse',
 		width: 250,
 		height: 100,
 		top: 550,
 		left: null,
 		right: 875,
-		door: {
+		enter: {
 			width: 36,
 			height: 39,
 			bottom: 0,
@@ -30,14 +30,14 @@ var houses = [
 		}		
 	},
 	{
-		name: 'Experience Interface',
-		id: '#expHouse',
+		name: 'Exerpeince House',
+		id: '#exerpeinceHouse',
 		width: 250,
 		height: 100,
 		top: 650,
 		left: 875,
 		right: null,
-		door: {
+		enter: {
 			width: 36,
 			height: 39,
 			bottom: 0,
@@ -45,14 +45,14 @@ var houses = [
 		}		
 	},
 	{
-		name: 'Projects Interface',
-		id: '#portfolioHouse',
+		name: 'Projects House',
+		id: '#projectsHouse',
 		width: 250,
 		height: 100,
 		top: 900,
 		left: null,
 		right: 575,
-		door: {
+		enter: {
 			width: 36,
 			height: 39,
 			bottom: 0,
@@ -60,14 +60,14 @@ var houses = [
 		}		
 	},
 	{
-		name: 'Contact Me Interface',
-		id: '#infoHouse',
+		name: 'Contact House',
+		id: '#contactHouse',
 		width: 190,
 		height: 100,
 		top: 1250,
 		left: 580,
 		right: null,
-		door: {
+		enter: {
 			width: 190,
 			height: 100,
 			bottom: 0,
@@ -80,25 +80,25 @@ var houses = [
 var notifications = [
 	{
 		id: 1,
-		type: 'error',
+		type: '',
 		text: 'You cant teleport over there!',
 		img: 'images/chathead.gif'
 	},
 	{
 		id: 2,
-		type: 'info',
+		type: '',
 		text: 'You can use your mouse to move around rather than your keyboard',
 		img: 'images/chathead.gif'
 	},
 	{
 		id: 3,
-		type: 'info',
+		type: '',
 		text: 'You are about to leave the Profile Exchange',
 		img: 'images/chathead.gif'
 	},
 	{
 		id: 4,
-		type: 'error',
+		type: '',
 		text: 'Stop! You cant leave this area until you have spoken to the guards!',
 		img: 'images/chathead.gif'
 	}
