@@ -1000,67 +1000,67 @@ nav a:hover, nav a.current {
 	border-radius: 5px;
 }
 
-/* How To Play */
+/* Intro */
+#intro {
+	display: none;
+}
 
-#lightbox .howtoplay article > p {
+#lightbox .intro article > p {
 	font-family: 'Molengo', Georgia, Times, serif;
 	font-size: 16px;
 }
 
-#lightbox .howtoplay .box {
+#lightbox .intro .box {
 	width: 100%;
 	padding: 0 30px;
 }
 
-#lightbox .howtoplay h2 {
+#lightbox .intro h2 {
 	background: url(images/welcomeme.png);
 	text-shadow: none;
 	box-shadow: none;
 }
 
-#lightbox .howtoplay div.box:first-of-type {
+#lightbox .intro div.box:first-of-type {
 	padding-top: 20px;
 }
 
-#lightbox .howtoplay .box p {
+#lightbox .intro .box p {
 	width: 700px;
 	padding-top: 14px;
 	padding-left: 20px;
 	font-size: 18px;
 }
 
-#lightbox .howtoplay .box .icon {
+#lightbox .intro .box .icon {
 	width: 40px;
 	height: 40px;
 }
 
-#lightbox .howtoplay .box#orbsIcon .icon {
+#lightbox .intro .box#orbsIcon .icon {
 	background-image: url(images/orbs.png);
 } 
 
-#lightbox .howtoplay .box#mouseIcon .icon {
+#lightbox .intro .box#mouseIcon .icon {
 	background-image: url(images/mouse.png);
 } 
 
-#lightbox .howtoplay .box#arrowIcon .icon {
+#lightbox .intro .box#arrowIcon .icon {
 	background-image: url(images/arrow.png);
 } 
 
-#lightbox .howtoplay .box#menuIcon .icon {
+#lightbox .intro .box#menuIcon .icon {
 	background-image: url(images/inventory.png);
 }  
 
-#lightbox .howtoplay .box#houseIcon .icon {
+#lightbox .intro .box#houseIcon .icon {
 	background-image: url(images/house.png);
 } 
 
-#lightbox .howtoplay .box#tabsIcon .icon {
+#lightbox .intro .box#tabsIcon .icon {
 	background-image: url(images/tabsicon.png);
 } 
 
-#howToPlay {
-	display: none;
-}
 /* End */
 
 /* IE Page */
