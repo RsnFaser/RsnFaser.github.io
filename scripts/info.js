@@ -1,6 +1,6 @@
 var houses = [
 {
-		name: 'About House',
+		name: 'About me Interface',
 		id: '#aboutUsHouse',
 		width: 250,
 		height: 100,
@@ -15,7 +15,7 @@ var houses = [
 		}
 	},
 	{
-		name: 'Services House',
+		name: 'Skills Interface',
 		id: '#servicesHouse',
 		width: 250,
 		height: 100,
@@ -30,7 +30,7 @@ var houses = [
 		}		
 	},
 	{
-		name: 'Exp House',
+		name: 'Experience Interface',
 		id: '#expHouse',
 		width: 250,
 		height: 100,
@@ -45,7 +45,7 @@ var houses = [
 		}		
 	},
 	{
-		name: 'Project House',
+		name: 'Projects Interface',
 		id: '#portfolioHouse',
 		width: 250,
 		height: 100,
@@ -60,7 +60,7 @@ var houses = [
 		}		
 	},
 	{
-		name: 'Contact House',
+		name: 'Contact Me Interface',
 		id: '#infoHouse',
 		width: 190,
 		height: 100,
