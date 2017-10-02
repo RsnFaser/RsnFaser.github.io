@@ -1,7 +1,7 @@
 var Game = function() {
 	this.player = $("#rscharacter");	
-	this.topPos = 0;
-	this.leftPos = $(window).width() / 2 - this.player.width() / 2;
+	this.positionTop = 0;
+	this.positionLeft = $(window).width() / 2 - this.player.width() / 2;
 	this.init();
 }
 
@@ -10,19 +10,16 @@ Game.constructor = Game;
 Game.prototype = {
 	
 	init: function() {
-		this.player.css('left', this.leftPos + 'px');
-
+		this.player.css('left', this.positionLeft + 'px');
 		this.eventsHandler();	
-		
 		this.intro();
-		
 		$('nav a:first').addClass('current');
 	},
 
 	intro: function() {
 		var isFirstTime = localStorage.getItem('isYourFirstTime');
 		if(!isFirstTime) {
-			this.lightboxInit('#intro', false);
+			this.createInfoBox('#intro', false);
 			localStorage.setItem('isYourFirstTime', false);	
 		}
 	},
@@ -38,24 +35,23 @@ Game.prototype = {
 		$('.tiles, .exitRoad').unbind('click').bind('click', function(e){
 			var x = e.pageX - player.width() / 2;
 			var y = e.pageY;
-			var canMove = me.canImove(x, y, true);
+			var canMove = me.checkMove(x, y, true);
 			if(canMove === true) {				
 				me.teleport(x, y);
-				me.openDoors(x, y);
-				me.revealMenu(y);
+				me.popupChatbox(y);
 			}
 			else {
-				me.showNotificationsBar(notifications[0]);
+				me.showChatBox(notifications[0]);
 			}
 		});
 		
 		$('.exit').unbind('click').bind('click', function(e){			
-			me.showNotificationsBar(notifications[3]);
+			me.showChatBox(notifications[3]);
 		});
 		
-		$('.house').unbind('click').bind('click', function(){
+		$('.poh').unbind('click').bind('click', function(){
 			var target = '#' + $(this).attr('id');
-			me.moveDirectToHouse(target);
+			me.goToPoh(target);
 		});
 
 		$('nav a').click(function(e){
@@ -69,70 +65,69 @@ Game.prototype = {
 				return;
 			}
 			else if(target == '#intro') {
-				me.lightboxInit(target, false);
+				me.createInfoBox(target, false);
 				return;
 			}
-			me.moveDirectToHouse(target);
+			me.goToPoh(target);
 		});
 
 		$(window).unbind('keydown').bind('keydown', function(event) {
-			if(me.topPos > parseFloat($('#startText').css('top'))) {
+			if(me.positionTop > parseFloat($('#startText').css('top'))) {
 				$('#startText').fadeOut('fast', function(){
 					$(this).remove();
 				});
 			}
 			switch (event.keyCode) {
-				case 37: // Left					
-					me.moveX(me.leftPos - 5, 'left');
+				case 37:					
+					me.moveX(me.positionLeft - 5, 'left');
 					event.preventDefault();
 				break;
 
-				case 39: // Right
-					me.moveX(me.leftPos + 5, 'right');
+				case 39:
+					me.moveX(me.positionLeft + 5, 'right');
 					event.preventDefault();
 				break;
 
-				case 38: // Up
-					me.moveY(me.topPos - 5, 'up');
+				case 38:
+					me.moveY(me.positionTop - 5, 'up');
 					event.preventDefault();
 				break;
 
-				case 40: // Down
-					me.moveY(me.topPos + 5, 'down');
+				case 40:
+					me.moveY(me.positionTop + 5, 'down');
 					event.preventDefault();
 				break;
 				
 				case 13: 
-					if(me.topPos > $('#mainFloor').height() - $('#exiting').height() - player.height()) {
+					if(me.positionTop > $('#mainFloor').height() - $('#exiting').height() - player.height()) {
 						$('nav a').removeClass('current');
 					}
 				break;
 				
 				case 27: 					
-					me.hideNotificationBar();
+					me.hideChatBox();
 				break;
 
 				case 32:
 					return false;
 				break;
 			}
-			me.openDoors(me.leftPos, me.topPos);
-			me.revealMenu(me.topPos);
+			me.popupChatbox(me.positionTop);
 		}).keyup(function(){
 			if(player.attr('class') != '')
 				player.removeAttr('class').destroy();
 		});	
 
 		$("#notifications").find('.close').live('click', function(){
-			me.hideNotificationBar();
+			me.hideChatBox();
 		});
 		
 		$("#backgroundBox, #closeLB").die('click').live('click', function(){
-			me.closeLightbox();
+			me.closeInfoBox();
 		});
 	},
 
-	showNotificationsBar: function(notification) {
+	showChatBox: function(notification) {
 		var me = this;		
 		$("#notifications").css('bottom', 0);
 		if(!$("#notifications").find('.inner').attr('id') || $("#notifications").find('.inner').text() != notification.text){
@@ -142,18 +137,18 @@ Game.prototype = {
 		}
 	},
 
-	hideNotificationBar: function() {
+	hideChatBox: function() {
 		$("#notifications").css('bottom', '-150px');
 	},
 
-	revealMenu: function(y) {
+	popupChatbox: function(y) {
 		if(y >= 200) {
 			$('nav').addClass('show');
-			if(y >= 350 && y < 355) {
-				this.showNotificationsBar(notifications[1]);
+			if(y >= 200 && y < 205) {
+				this.showChatBox(notifications[1]);
 			}
-			else if(y > 580 && $("#notifications").find('.inner').text() == notifications[1].text) {
-				this.hideNotificationBar();
+			else if(y > 1100 && $("#notifications").find('.inner').text() == notifications[1].text) {
+				this.hideChatBox();
 			}
 		}
 		else {
@@ -162,64 +157,63 @@ Game.prototype = {
 	},
 
 	teleport: function(x, y) {		
-		this.topPos = y;
-		this.leftPos = x;
+		this.positionTop = y;
+		this.positionLeft = x;
 		var player = this.player;
 		player.css({
 			opacity: 0,
 			top: y,
 			left: x
 		}).show().stop(true, true).animate({opacity: 1});
-		if(this.topPos >= 200) {
+		if(this.positionTop >= 200) {
 			$('html, body').animate({scrollTop: y - 400}, 'slow');
 		}
 	},
 
-	moveDirectToHouse: function(target) {
-		var house;
-		for(i = 0; i < houses.length; i++) {
-			if(houses[i].id == target) {
-				house = houses[i];
+	goToPoh: function(target) {
+		var poh;
+		for(i = 0; i < pohs.length; i++) {
+			if(pohs[i].id == target) {
+				poh = pohs[i];
 				break;
 			}
 		}
-		var y = house.top + house.height - 70;
+		var y = poh.top + poh.height - 70;
 		var x;
-		if(house.left && house.left != null) {
-			x = house.left + house.door.left;
+		if(poh.left && poh.left != null) {
+			x = poh.left + poh.enter.left;
 		}
 		else {
-			x = $(window).width() - house.width - house.right + house.door.left;
+			x = $(window).width() - poh.width - poh.right + poh.enter.left;
 		}
-		var canMove = this.canImove(x, y, true);
+		var canMove = this.checkMove(x, y, true);
 		if(canMove) {
-			this.topPos = y;
-			this.leftPos = x;
+			this.positionTop = y;
+			this.positionLeft = x;
 			this.teleport(x, y);
-			this.openDoors(x, y);
 		}
 	},
 	
 	moveX: function(x, dir) {
 		var player = this.player;
-		var canMove = this.canImove(x, null);	
+		var canMove = this.checkMove(x, null);	
 		if(canMove){
-			this.leftPos = x;
+			this.positionLeft = x;
 			player.animate({'left': x + 'px'}, 10);
 		}
 		if(dir == 'left') {
-			this.startMoving('left', 2);
+			this.moveAround('left', 2);
 		}
 		else {
-			this.startMoving('right', 3);
+			this.moveAround('right', 3);
 		}
 	},
 	
 	moveY: function(y, dir) {
 		var player = this.player;
-		var canMove = this.canImove(null, y);	
+		var canMove = this.checkMove(null, y);	
 		if(canMove) {
-			if(this.topPos >= 200) {
+			if(this.positionTop >= 200) {
 				if(dir == 'up') {
 					$('html, body').animate({scrollTop: $(document).scrollTop() - 5}, 10);
 				}
@@ -227,18 +221,18 @@ Game.prototype = {
 					$('html, body').animate({scrollTop: $(document).scrollTop() + 5}, 10);
 				}
 			}
-			this.topPos = y;
+			this.positionTop = y;
 			player.animate({'top': y + 'px'}, 10);
 		}
 		if(dir == 'up') {
-			this.startMoving('up', 4);
+			this.moveAround('up', 4);
 		}
 		else {
-			this.startMoving('down', 1);
+			this.moveAround('down', 1);
 		}
 	},
 
-	startMoving: function(dir, state) {								
+	moveAround: function(dir, state) {								
 		var player = this.player;
 		if(!player.hasClass(dir)) {
 			player.addClass(dir);
@@ -246,53 +240,53 @@ Game.prototype = {
 		}				
 	},
 	
-	inHouse: function(elmLeft, elmTop) {
+	insidePoh: function(elmLeft, elmTop) {
 		var player = this.player;
-		var isInHouse = [];
-		for(i = 0; i < houses.length; i++) {
-			if(elmTop > houses[i].top && elmTop < houses[i].top + houses[i].height) {
-				if(houses[i].left && houses[i].left != null) {
-					if(elmLeft < houses[i].left + houses[i].width && elmLeft > houses[i].left - player.width() && elmTop < houses[i].top + houses[i].height) {
-						if(elmLeft > houses[i].left + houses[i].door.left - player.width() / 2 && elmLeft < houses[i].left + houses[i].door.width + houses[i].door.left - player.width() / 2) {
-							isInHouse.push(true);
-							if(elmTop <= houses[i].top + houses[i].height - 70) {
-								this.lightboxInit(houses[i].id, true);
+		var isinsidePoh = [];
+		for(i = 0; i < pohs.length; i++) {
+			if(elmTop > pohs[i].top && elmTop < pohs[i].top + pohs[i].height) {
+				if(pohs[i].left && pohs[i].left != null) {
+					if(elmLeft < pohs[i].left + pohs[i].width && elmLeft > pohs[i].left - player.width() && elmTop < pohs[i].top + pohs[i].height) {
+						if(elmLeft > pohs[i].left + pohs[i].enter.left - player.width() / 2 && elmLeft < pohs[i].left + pohs[i].enter.width + pohs[i].enter.left - player.width() / 2) {
+							isinsidePoh.push(true);
+							if(elmTop <= pohs[i].top + pohs[i].height - 70) {
+								this.createInfoBox(pohs[i].id, true);
 							}
 						}
 						else {
-							isInHouse.push(false);
+							isinsidePoh.push(false);
 						}
 					}				
 					else {
-						isInHouse.push(true);
+						isinsidePoh.push(true);
 					}
 				}
-				else if(houses[i].right && houses[i].right != null) {
-					if(elmLeft > $(window).width() - houses[i].width - houses[i].right - player.width() && elmLeft < $(window).width() - houses[i].right && elmTop < houses[i].top + houses[i].height) {
-						if(elmLeft > $(window).width() - houses[i].width - houses[i].right + houses[i].door.left - 10  && elmLeft < $(window).width() - houses[i].right - houses[i].width + houses[i].door.left + houses[i].door.width - 10) {
-							isInHouse.push(true);
-							if(elmTop <= houses[i].top + houses[i].height - 70) {
-								this.lightboxInit(houses[i].id, true);
+				else if(pohs[i].right && pohs[i].right != null) {
+					if(elmLeft > $(window).width() - pohs[i].width - pohs[i].right - player.width() && elmLeft < $(window).width() - pohs[i].right && elmTop < pohs[i].top + pohs[i].height) {
+						if(elmLeft > $(window).width() - pohs[i].width - pohs[i].right + pohs[i].enter.left - 10  && elmLeft < $(window).width() - pohs[i].right - pohs[i].width + pohs[i].enter.left + pohs[i].enter.width - 10) {
+							isinsidePoh.push(true);
+							if(elmTop <= pohs[i].top + pohs[i].height - 70) {
+								this.createInfoBox(pohs[i].id, true);
 							}
 						}
 						else {
-							isInHouse.push(false);
+							isinsidePoh.push(false);
 						}
 					}
 					else {
-						isInHouse.push(true);
+						isinsidePoh.push(true);
 					}
 				}
 				else {
-					isInHouse.push(true);
+					isinsidePoh.push(true);
 				}
 				break;
 			}			
 		}
-		return isInHouse;
+		return isinsidePoh;
 	},
 
-	isRoad: function(elmLeft, elmTop) {
+	onTiles: function(elmLeft, elmTop) {
 		var player = this.player;
 		var mainRoad = $("#tilesFloor");
 		var isOnRoad = true;
@@ -334,29 +328,29 @@ Game.prototype = {
 		return isOnRoad;
 	},
 
-	canImove: function(moveLeft, moveTop, teleported) {
+	checkMove: function(moveLeft, moveTop, teleported) {
 		var player = this.player;
-		var elmLeft = moveLeft || this.leftPos;
-		var elmTop = moveTop || this.topPos;
+		var elmLeft = moveLeft || this.positionLeft;
+		var elmTop = moveTop || this.positionTop;
 		
 		if(player.css('display') == 'none' && !teleported) {
 			return false;
 		}
 		
 		// Check if the player is around a house
-		var isHouse = this.inHouse(elmLeft, elmTop);							
+		var isHouse = this.insidePoh(elmLeft, elmTop);							
 		if(isHouse.indexOf(false) >= 0) {
 			return false;
 		}
 
-		var isRoad = this.isRoad(elmLeft, elmTop);
-		if(isRoad === false) {
+		var onTiles = this.onTiles(elmLeft, elmTop);
+		if(onTiles === false) {
 			return false;
 		}
 		
 		// Sea Handler
 		if(elmTop > $('#mainFloor').height() - $('#exiting').height() - player.height()) {
-			this.showNotificationsBar(notifications[2]);
+			this.showChatBox(notifications[2]);
 			if(elmLeft > $(window).width() / 2 - $('#exitingRoad').width() / 2 && elmLeft < $(window).width() / 2 + $('#exitingRoad').width() / 2 - player.width()) {				
 				if(elmTop > $('#mainFloor').height() - $('#exiting').height() + $("#exitingRoad").height() - 100 - player.height()) {
 				 	return false;
@@ -371,7 +365,7 @@ Game.prototype = {
 		return true;
 	},
 	
-	lightboxInit:  function(elm, effectMenu) {
+	createInfoBox:  function(elm, effectMenu) {
 		var me = this;
 		if($("#backgroundBox").length < 1) {			
 			if(effectMenu) {
@@ -381,38 +375,38 @@ Game.prototype = {
 			}
 			
 			// Get the relevant content
-			var content = $(elm).find('.lightbox').html();
+			var content = $(elm).find('.infoBox').html();
 
-			// Creates the lightbox
+			// Creates the infoBox
 			$('<div id="backgroundBox"></div>').appendTo('body').fadeIn();
-			$('<div id="lightbox">' + content + '<span id="closeLB">x</span></div>').insertAfter("#backgroundBox").delay(1000).fadeIn();
+			$('<div id="infoBox">' + content + '<span id="closeLB">x</span></div>').insertAfter("#backgroundBox").delay(1000).fadeIn();
 
 			$(window).unbind('keydown');
 			$('#mainFloor').unbind('click');
 			
 			$(window).bind('keydown', function(e){
 				if(e.keyCode == 27) {
-					me.closeLightbox();
+					me.closeInfoBox();
 				}
 			});
 		}		
 	},
 	
-	closeLightbox: function() {
+	closeInfoBox: function() {
 		var me = this;
-		$('#backgroundBox, #lightbox').fadeOut('fast', function(){
-			var canMove = me.canImove(me.leftPos, me.topPos + 80);
+		$('#backgroundBox, #infoBox').fadeOut('fast', function(){
+			var canMove = me.checkMove(me.positionLeft, me.positionTop + 80);
 			if(canMove) {				
-				me.startMoving('down', 1);
-				me.player.animate({'top': me.topPos + 80}, function(){
+				me.moveAround('down', 1);
+				me.player.animate({'top': me.positionTop + 80}, function(){
 					me.player.removeAttr('class').destroy();
 				});
-				me.topPos = me.topPos + 80;
+				me.positionTop = me.positionTop + 80;
 			}
-			$('#backgroundBox, #lightbox').remove();
+			$('#backgroundBox, #infoBox').remove();
 			me.eventsHandler();
 			$('html, body').animate({
-				scrollTop: me.topPos - 570
+				scrollTop: me.positionTop - 570
 			});
 		});
 	}
