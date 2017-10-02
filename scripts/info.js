@@ -16,7 +16,7 @@ var houses = [
 	},
 	{
 		name: 'Skills Interface',
-		id: '#servicesHouse',
+		id: '#skillsHouse',
 		width: 250,
 		height: 100,
 		top: 550,
