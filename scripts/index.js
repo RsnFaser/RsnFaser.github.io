@@ -10,19 +10,13 @@ Game.constructor = Game;
 Game.prototype = {
 	
 	init: function() {
-		// Center the player relative to the window width
 		this.player.css('left', this.leftPos + 'px');
 
-		// Add an event handler
 		this.eventsHandler();	
-
-		// How To play lighbox
+		
 		this.howToPlay();
 		
 		$('nav a:first').addClass('current');
-		
-		// Puts flowers
-		//this.putFlowers();
 	},
 
 	howToPlay: function() {
