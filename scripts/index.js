@@ -111,8 +111,6 @@ Game.prototype = {
 				case 13: 
 					if(me.topPos > $('#mainFloor').height() - $('#exiting').height() - player.height()) {
 						$('nav a').removeClass('current');
-						$('nav a[href="#boat"]').addClass('current');
-						me.shipSail();
 					}
 				break;
 				
@@ -181,7 +179,6 @@ Game.prototype = {
 		if(this.topPos >= 200) {
 			$('html, body').animate({scrollTop: y - 400}, 'slow');
 		}
-		this.shipBack();
 	},
 
 	moveDirectToHouse: function(target) {
