@@ -1,0 +1,573 @@
+<div id="mainFloor">				
+		<!-- Top Wall -->
+		<div id="wallStart" class="wall"></div>
+
+		<!-- Side Bushes -->
+		<div id="leftBushes"></div>
+		<div id="rightBushes"></div>
+	
+		<!-- Tile Floor -->
+		<div id="tilesFloor" class="tiles"></div>
+		
+		<!-- Runescape Character -->
+		<div id="rscharacter"></div>
+		
+		<!-- About Me House -->
+		<div id="aboutUsHouse" class="house">
+			<div class="door"></div>
+			<div class="lightbox">
+				<div class="inner about">
+					<h2>Information About Me</h2>
+					<div style="text-align:left">	
+						<span class="dot me" onclick="currentSlide(4)"><p>Real Life</p></span> 
+						<span class="dot rs3" onclick="currentSlide(5)"><p>RS3</p></span> 
+						<span class="dot osrs" onclick="currentSlide(6)"><p>Oldschool</p></span> 
+					</div>
+					
+					<div class="slideshow-container">
+						<div class="mySlides fade">
+							<img src="images/profileimage.png" alt="Faser Parvez" />
+							<article>
+								<p>
+									My name is Faser Parvez and I am a developer who has a great passion for web design & development and gaming.
+								</p>
+								<p>
+									I have recently graduated with a 2:1 BSc Hons degree in Computing at the University of Huddersfield. I am a person who enjoys taking new adventures by developing unique and interesting web applications/games.
+								</p>
+								<p>
+									As a person with strong analytical and technical skill while working at a high standard, I believe in self-improvement and taking new and exciting challenges while progressing my career further.
+								</p>
+								<p>
+									As a person with strong analytical and technical skill while working at a high standard, I believe in self-improvement and taking new and exciting challenges while progressing my career further.
+								</p>
+								<p>
+									life with Runescape a game that I love, so I can help both Jagex and the community grow positively while coming up with interesting content that people will enjoy.
+								</p>
+							</article>
+						</div>
+						<div class="mySlides fade">
+							<h3>My Runescape 3 Experience Information</h3>
+							<img src="images/rsimage.png" alt="RS3-Info" />
+							<article>
+								<p>
+									I am a Runescape 3 player with 10 years in-game experience.
+								</p>
+								<p>
+									My Runescape characters in game are: Mall (Maxed), Faser (Ironman) and Pepsi Max (inactive, included to show in-game experience)
+								</p>
+								<p>
+									Below are some interesting facts about my Runescape experience:
+								</p>
+								<p>
+									Favourite Skill(s): Construction & Slayer 
+								</p>
+								<p>
+									Least Favourite Skill(s): Runcrafting & Hunter
+								</p>	
+								<p>
+									Favourite Content(s): Ironman Mode, Quests, Clue Scrolls
+								</p>
+								<p>
+									Least Favourite Content(s): Pking, Daily-scape 
+								</p>
+								<p>
+									Best Update: Ironman mode 
+								<p>
+								<p>
+									Worst Update: Bounty Hunter 
+								</p>	
+							</article>
+						</div>
+						<div class="mySlides fade">
+							<h3>My Oldschool Experience Information</h3>
+							<img src="images/osrsimage.png" alt="Oldschool-Info" />
+							<article>
+								<p>
+									I am also a Oldschool Runescape player with 1 years in-game experience.
+								</p>
+								<p>
+									My Runescape characters in game are: Mall (Skiller, Clue scroller)
+								</p>
+								<p>
+									Below are some interesting facts about my Runescape experience:
+								</p>
+								<p>
+									Favourite Skill(s): Construction & Thieving
+								</p>
+								<p>
+									Least Favourite Skill(s): Runcrafting & Hunter
+								</p>	
+								<p>
+									Favourite Content(s): Clue Scrolls (Master clues)
+								</p>
+								<p>
+									Least Favourite Content(s): Pking
+								</p>
+								<p>
+									Best Update: Clue Scrolls
+								<p>
+								<p>
+									Worst Update: Wintertodt 
+								</p>	
+							</article>
+						</div>						
+					</div>
+					<script>
+						var slideIndex = 4;
+						showSlides(slideIndex);
+						
+						function plusSlides(n) {
+							showSlides(slideIndex += n);
+						}
+						
+						function currentSlide(n) {
+							showSlides(slideIndex = n);
+						}
+						
+						function showSlides(n) {
+							var i;
+							var slides = document.getElementsByClassName("mySlides");
+							var dots = document.getElementsByClassName("dot");
+							if (n > slides.length) {slideIndex = 4}    
+							if (n < 4) {slideIndex = slides.length}
+							for (i = 0; i < slides.length; i++) {
+								slides[i].style.display = "none";  
+							}
+							for (i = 0; i < dots.length; i++) {
+								dots[i].className = dots[i].className.replace(" active", "");
+
+							}
+							slides[slideIndex-1].style.display = "block";  
+							dots[slideIndex-1].className += " active";
+						}
+					</script>
+				</div>
+			</div>
+		</div>
+		<div id="aboutSign" class="sign"><span>About Me & Runescape</span></div>
+	
+		<!-- My Skills House -->
+		<div id="servicesHouse" class="house">
+			<div class="door"></div>
+			<div class="lightbox">
+				<div class="inner services">
+					<h2>My Skills</h2>
+					<div style="text-align:left">	
+						<span class="dot2 me" onclick="currentSlide1(3)"><p>Techincal</p></span> 
+						<span class="dot2 rs" onclick="currentSlide1(4)"><p>Personal</p></span> 
+					</div>	
+					
+					<div class="slideshow-container">
+						<div class="mySlides1 fade">
+							<section id="skillsList">
+								<h3>Techincal Skills:</h3>
+								<ul>
+									<h4>Programming:</h4>
+									<li>HTML5, CSS3, JavaScript, jQuery, React, NodeJS</li>
+									<li>Java, PHP</li>
+									<li>C#, C++</li>
+								</ul>
+								<ul>
+									<h4>Database:</h4>
+									<li>SQL, MySQL, Microsoft SQL Servers</li>
+								</ul>
+								<ul>
+									<h4>Others:</h4>
+									<li>Photoshop, GIMP 2</li>
+									<li>Microsoft Office, Github, WordPress</li>
+								</ul>
+							</section>
+							<section>
+								<h3>Fun Facts!</h3>
+								<div id="sCode" class="box clearfix">
+									<div class="icon"></div>
+									<h4>Developing Apps</h4>
+									<p>I have developed high quality applications for University of Huddersfield and received outstanding reviews.</p>
+								</div>
+								<div id="sCode" class="box clearfix">
+									<div class="icon"></div>
+									<h4>Self-Improving Skills</h4>
+									<p>I enjoy self-improving skills and expanding my knowledge by exploring new technologies and techniques.</p>
+								</div>
+								<div id="sCode" class="box clearfix">
+									<div class="icon"></div>
+									<h4>Knowledge of Methodologies</h4>
+									<p>Knowledge & working experience of Software & Testing methodologies such as Waterfall, Agile, Scrum.</p>
+								</div>
+							</section>
+							<div class="clear"></div>
+						</div>
+						<div class="mySlides1 fade">
+							<section id="skillsList">
+								<h3>Personal Skills:</h3>
+								<ul>
+									<h4>Analytical Skills:</h4>
+									<li>Excellent verbal & written communication</li>
+									<li>Initiative, Creativity & Thinker</li>
+									<li>Self-Confidence & Strong Work Ethic</li>
+								</ul>
+								<ul>
+									<h4>Teamworking & Planning:</h4>
+									<li>Working in a team & alone</li>
+									<li>Excellent organisation skills</li>
+									<li>Deliver projects on time</li>
+								</ul>
+								<ul>
+									<h4>Learning:</h4>
+									<li>Quickly adapt & research new technologies</li>
+									<li>Helping others learn</li>
+								</ul>
+							</section>
+							<section>
+								<h3>Fun Facts!</h3>
+								<div id="sCode" class="box clearfix">
+									<div class="icon"></div>
+									<h4>Teamworking</h4>
+									<p>I am a person who is eager to work in a team and deliver at a high standard while having fun.</p>
+								</div>
+								<div id="sCode" class="box clearfix">
+									<div class="icon"></div>
+									<h4>Deliver on time</h4>
+									<p>I always plan out projects to make sure that they are delivered on time & at an excellent quality.</p>
+								</div>
+								<div id="sCode" class="box clearfix">
+									<div class="icon"></div>
+									<h4>Strongest Ability</h4>
+									<p>Strongest ability is learning & adapting quickly to new technologies without needing help.</p>
+								</div>
+							</section>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<script>
+						var slideIndex1 = 3;
+						showSlides1(slideIndex1);
+						function plusSlides1(n) {
+							showSlides1(slideIndex1 += n);
+						}
+						function currentSlide1(n) {
+							showSlides1(slideIndex1 = n);
+						}
+						function showSlides1(n) {
+							var i;
+							var slides = document.getElementsByClassName("mySlides1");
+							var dots = document.getElementsByClassName("dot2");
+							if (n > slides.length) {slideIndex1 = 3}
+							if (n < 3) {slideIndex1 = slides.length}
+							for (i = 0; i < slides.length; i++) {
+								slides[i].style.display = "none";
+							}
+							for (i = 0; i < dots.length; i++) {
+								dots[i].className = dots[i].className.replace(" active", "");
+							}
+							slides[slideIndex1-1].style.display = "block";
+							dots[slideIndex1-1].className += " active";
+						}
+					</script>
+				</div>
+			</div>
+		</div>
+		<div id="servicesSign" class="sign"><span>Skills</span></div>
+	
+		<!-- Education & Exerpeince House -->
+		<div id="expHouse" class="house">
+			<div class="door"></div>
+			<div class="lightbox">
+				<div class="inner exp">
+					<h2>Education & Work Experience</h2>
+					<div style="text-align:left">	
+						<span class="dot3 ed" onclick="currentSlide2(5)"><p>Education</p></span> 
+						<span class="dot3 we1" onclick="currentSlide2(6)"><p>Work Exp 1</p></span> 
+						<span class="dot3 we2" onclick="currentSlide2(7)"><p>Work Exp 2</p></span> 
+						<span class="dot3 we3" onclick="currentSlide2(8)"><p>Work Exp 3</p></span> 
+					</div>
+					
+					<div class="slideshow-container">
+						<div class="mySlides2 fade">
+							<section id="skillsList">
+								<h3>Eduction</h3>
+								<ul>
+									<h4>University of Huddersfield:</h4>
+									<li>2:1 Degree Class in BSc (Hons) Computing</li>
+									<li>Sandwich degree (Placement year)</li>
+									<li>Design & Programming subjects</li>
+									<li>Final Year Project graded A (70%)</li>
+								</ul>
+								<ul>
+									<h4>Rotherham College</h4>
+									<li>BTEC Course in Computing</li>
+									<li>Highest grade achieved (A,A,A)</li>
+									<li>Awarded the Faculty of Professional Studies</li>
+								</ul>
+								<ul>
+									<h4>Newman School</h4>
+									<li>Awarded GSCE in English, Maths, Science, History, ICT</li>
+									<li>Level 2 in Communication & Numbers</li>
+								</ul>
+							</section>
+							<section>
+								<h3>Fun Facts!</h3>
+								<div id="sCode" class="box clearfix">
+									<div class="icon"></div>
+									<h4>Course Rep</h4>
+									<p>Acted as a course representative for students within the course I was studying at the University.</p>
+								</div>
+								<div id="sCode" class="box clearfix">
+									<div class="icon"></div>
+									<h4>Personal Effectiveness</h4>
+									<p>Awarded the Certificate of Personal Effectiveness for completing the BTEC Computing course.</p>
+								</div>
+								<div id="sCode" class="box clearfix">
+									<div class="icon"></div>
+									<h4>Backstage Pantomime Manager</h4>
+									<p>Became the role of backstage pantomime manager on every year while at school.</p>
+								</div>
+							</section>
+							<div class="clear"></div>
+						</div>
+						<div class="mySlides2 fade">
+							<section id="skillsList">
+								<h3>Recent Work Experience:</h3>
+								<ul>
+									<h4>Junior Web Developer</h4>
+									<li>Junior Web Developer for Art & Design school at University</li>
+									<li>Develop an interactive website site</li>
+									<li>Purpose to create & advertise Guest Lectures & Workshop</li>
+									<li>Work with the head of school & marketing team</li>
+								</ul>
+								<ul>
+									<li>Developed with HTML, CSS, JS & PHP</li>
+									<li>Used the university SQL Server for database</li>
+									<li>Used university content management system</li>
+								</ul>
+								<ul>
+									<li>Attended fortnightly update meetings</li>
+									<li>Communicated effectively with clients and users</li>
+									<li>Undertook other responsibilities</li>
+
+								</ul>
+							</section>
+							<section>
+								<h3>Fun Facts!</h3>
+								<div id="sCode" class="box clearfix">
+									<div class="icon"></div>
+									<h4>New Technology</h4>
+									<p>Quickly adopted & learned all the features of the content management system.</p>
+								</div>
+								<div id="sCode" class="box clearfix">
+									<div class="icon"></div>
+									<h4>Demonstration</h4>
+									<p>Demondrated the Guest lectures web system infront of the head of departments.</p>
+								</div>
+								<div id="sCode" class="box clearfix">
+									<div class="icon"></div>
+									<h4>Bug Tester</h4>
+									<p>Helped a colleague by bug testing features that they have developed on Unilearn.</p>
+								</div>
+							</section>
+							<div class="clear"></div>
+						</div>
+						<div class="mySlides2 fade">
+							<section id="skillsList">
+								<h3>Previous Work Experience:</h3>
+								<ul>
+									<h4>Peers Teaching Assistant</h4>
+									<li>Volunteered as a peers teaching assistant.</li>
+									<li>Worked as a peers teaching assistant while doing my final year degree.</li>
+									<li>Worked with both 1st year students & university tutors.</li>
+								</ul>
+								<ul>
+									<li>Attended tutoring sessions 1 day per week to help students.</li>
+									<li>Set up help sessions 1 day per fortnightly for students to attend.</li>
+									<li>Assist students in any queries on their work or assignments.</li>
+								</ul>
+								<ul>
+									<li>Acted as a voice of concern for 1st year students.</li>
+									<li>Communicated with tutors on any issues arised.</li>
+									<li>Undertook other responsibilities</li>
+
+								</ul>
+							</section>
+							<section>
+								<h3>Fun Facts!</h3>
+								<div id="sCode" class="box clearfix">
+									<div class="icon"></div>
+									<h4>Rotating Work Schedule</h4>
+									<p>Worked in a rotating work schdule with another student to set up sessions.</p>
+								</div>
+								<div id="sCode" class="box clearfix">
+									<div class="icon"></div>
+									<h4>Students issues</h4>
+									<p>Helped students get their issues sorted out such as having more free computer rooms to study in.</p>
+								</div>
+								<div id="sCode" class="box clearfix">
+									<div class="icon"></div>
+									<h4>Student grades</h4>
+									<p>By helping set up the session, some students achieved a higher grade than predicted.</p>
+								</div>
+							</section>
+							<div class="clear"></div>
+						</div>
+						<div class="mySlides2 fade">
+							<section id="skillsList">
+								<h3>Previous Work Experience:</h3>
+								<ul>
+									<h4>Junior Software Developer</h4>
+									<li>Worked as a Jr Software Developer for placement at the university.</li>
+									<li>Develop a system to store all of the module specification documents online.</li>
+									<li>Work with a team at the Computing & Library services.</li>
+								</ul>
+								<ul>
+									<li>Developed with HTML5, CSS3, JS & C#.</li>
+									<li>Used the Agile methodology to develop the system.</li>
+								</ul>
+								<ul>
+									<li>Worked with the Computing & Engineering head.</li>
+									<li>Attended weekly update meetings.</li>
+									<li>Undertook other responsibilities</li>
+
+								</ul>
+							</section>
+							<section>
+								<h3>Fun Facts!</h3>
+								<div id="sCode" class="box clearfix">
+									<div class="icon"></div>
+									<h4>Presentation</h4>
+									<p>Did a presentation on the system to the head of schools and deans of the university.</p>
+								</div>
+								<div id="sCode" class="box clearfix">
+									<div class="icon"></div>
+									<h4>Student Registration</h4>
+									<p>Took responsibiity of helping students to register at the start of term.</p>
+								</div>
+								<div id="sCode" class="box clearfix">
+									<div class="icon"></div>
+									<h4>Final Year Project</h4>
+									<p>Continued the development work of this system for my final year project.</p>
+								</div>
+							</section>
+							<div class="clear"></div>
+						</div>							
+					</div>
+					<script>
+						var slideIndex2 = 5;
+						showSlides2(slideIndex2);
+						function plusSlides2(n) {
+							showSlides2(slideIndex2 += n);
+						}
+						function currentSlide2(n) {
+							showSlides2(slideIndex2 = n);
+						}
+						function showSlides2(n) {
+							var i;
+							var slides = document.getElementsByClassName("mySlides2");
+							var dots = document.getElementsByClassName("dot3");
+							if (n > slides.length) {slideIndex2 = 5}
+							if (n < 5) {slideIndex2 = slides.length}
+							for (i = 0; i < slides.length; i++) {
+								slides[i].style.display = "none";
+							}
+							for (i = 0; i < dots.length; i++) {
+								dots[i].className = dots[i].className.replace(" active", "");
+							}
+							slides[slideIndex2-1].style.display = "block";
+							dots[slideIndex2-1].className += " active";
+						}
+					</script>
+				</div>
+			</div>
+		</div>
+		<div id="expSign" class="sign"><span>Eduction & Experience</span></div>
+	
+		<!-- Projects house -->
+		<div id="portfolioHouse" class="house">
+			<div class="door"></div>
+			<div class="lightbox">
+				<div class="inner portfolio clearfix">
+					<h2>Recent Works</h2>
+					<div class="portfolioBox">
+						<div class="inner">
+							<a class="portfolioImg" href="" target="_blank">
+								<img src="images/modulespec.png" alt="Module Specification" />
+							</a>
+							<h4>Module Specification System</h4>
+						</div>
+					</div>
+					<div class="portfolioBox">
+						<div class="inner">
+							<a class="portfolioImg" href="" target="_blank">
+								<img src="images/guestlecture.png" alt="Guest Lectures" />
+							</a>
+							<h4>Guest Lectures Site</h4>
+						</div>
+					</div>
+					<div class="portfolioBox">
+						<div class="inner">
+							<a class="portfolioImg" href="" target="_blank">
+								<img src="images/chatroom.png" alt="Chatroom" />
+							</a>
+							<h4>Java Chatroom</h4>
+						</div>
+					</div>
+					<div class="portfolioBox">
+						<div class="inner">
+							<a class="portfolioImg" href="" target="_blank">
+								<img src="images/camcobra.png" alt="CamCobra" />
+							</a>
+							<h4>Java Cam-Cobra</h4>
+						</div>
+					</div>
+					<div class="portfolioBox">
+						<div class="inner">
+							<a class="portfolioImg" href="" target="_blank">
+								<img src="images/database.png" alt="Game Database" />
+							</a>
+							<h4>C++ Games Database</h4>
+						</div>
+					</div>
+					<div class="portfolioBox">
+						<div class="inner">
+							<a class="portfolioImg" href="" target="_blank">
+								<img src="images/selenium.png" alt="Selenium Validation" />
+							</a>
+							<h4>Selemruim</h4>
+						</div>
+					</div>	
+				</div>
+			</div>
+		</div>
+		<div id="portfolioSign" class="sign"><span>Example Projects</span></div>	
+	
+		<!-- Contact Information House -->
+		<div id="infoHouse" class="house">
+			<div class="door"></div>
+			<div class="lightbox">
+				<div class="inner info">
+					<h2></h2>
+					<img src="images/contact.png" alt="Daniel Sternlicht" />
+					<article>
+						<h3>Contact Details</h3> 
+						<br>
+						<h4><strong>Address:</strong></h4>
+						<p>Kinross, St Leonards Road</p>
+						<p>Rotherham, South Yorkshire</p>
+						<p>England, United Kingdom</p>
+						<p>S65 1PD</p>
+						<h4><strong>Email:</strong></h4>	
+						<p><a href="mailto:u1167937@alumni.hud.ac.uk">u1167937@alumni.hud.ac.uk</a></p>
+						<h4><strong>Phone Number:</strong></h4>	
+						<p>07480990332</p>
+					</article>
+				</div>
+			</div>
+		</div>
+	
+		<!-- Exit -->
+		<div id="exiting" class="exit">
+			<div class="statue s1"></div>	
+			<div class="statue s2"></div>	
+			<div id="rightRoad" class="rRoad"></div>
+			<div id="leftRoad" class="lRoad"></div>
+		</div>		
+		<div id="exitingRoad" class="exitRoad"></div>
+</div>
