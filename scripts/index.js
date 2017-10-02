@@ -254,34 +254,6 @@ Game.prototype = {
 			player.sprite({fps: 9, no_of_frames: 3}).spState(state);						
 		}				
 	},
-
-	openDoors: function(x, y) {
-		var player = this.player;
-		var elmLeft = x || this.leftPos;
-		var elmTop = y || this.topPos;
-		for(i = 0; i < houses.length; i++) {
-			if(houses[i].left && houses[i].left != null) {
-				if(elmTop >= houses[i].top + houses[i].height - 80 && elmTop < houses[i].top + houses[i].height + player.height() && elmLeft < houses[i].left + houses[i].width) {
-					$(houses[i].id).find(".door").addClass('open');
-				}
-				else { 
-					$(houses[i].id).find(".door").removeClass('open');	
-				}
-
-			}
-			else if(houses[i].right && houses[i].right != null) {
-				if(elmTop >= houses[i].top + houses[i].height - 80 && elmTop < houses[i].top + houses[i].height + player.height() && elmLeft > $(window).width() - houses[i].right - houses[i].width) {
-					$(houses[i].id).find(".door").addClass('open');
-				}
-				else {
-					$(houses[i].id).find(".door").removeClass('open');
-				}
-			}
-			else {
-				$(".door").removeClass('open');	
-			}
-		}
-	},
 	
 	inHouse: function(elmLeft, elmTop) {
 		var player = this.player;
