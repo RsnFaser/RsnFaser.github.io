@@ -218,7 +218,7 @@ nav a:hover, nav a.current {
 }
 /* End */
 
-/* Me */
+/* Rs Character */
 
 #rscharacter {
 	position: absolute;
@@ -260,13 +260,13 @@ nav a:hover, nav a.current {
 /* End */
 
 /* Houses */
-.house {
+.poh {
 	position: absolute;
 	z-index: 56;
 	cursor: pointer;
 }
 
-.house:hover + div.sign span  {
+.poh:hover + div.sign span  {
 	opacity: 1;
 }
 
@@ -288,7 +288,7 @@ nav a:hover, nav a.current {
 	margin-right: 200px;
 }
 
-#expHouse {
+#exerpeinceHouse {
 	background: url(images/house1.png) no-repeat;
 	width: 250px;
 	height: 100px;
@@ -298,7 +298,7 @@ nav a:hover, nav a.current {
 }
 
 
-#portfolioHouse {
+#projectsHouse {
 	background: url(images/house1.png) no-repeat;
 	width: 250px;
    	height: 100px;
@@ -308,7 +308,7 @@ nav a:hover, nav a.current {
 }
 
 
-#infoHouse {
+#contactHouse {
 	background: url(images/guard.png) no-repeat;
 	width: 190px;
 	height: 100px;
@@ -520,32 +520,32 @@ nav a:hover, nav a.current {
 	margin-left: -80px;
 }
 
-#expSign {
+#experienceSign {
 	left: 50%;
 	top: 700px;
 	margin-left: 150px;
 }
 
-#expSign span {
+#experienceSign span {
 	width: 151px;
 	margin-left: -80px;
 }
 
-#portfolioSign {
+#projectsSign {
 	right: 50%;
 	top: 950px;
 	margin-right: -150px;
 }
 
-#portfolioSign span {
+#projectsSign span {
 	width: 140px;
 	margin-left: -80px;
 }
 /* End */
 
-/* Lightboxes */
+/* Information Box */
 
-.house .lightbox {
+.poh .infoBox {
 	display: none;
 }
 
@@ -560,7 +560,7 @@ nav a:hover, nav a.current {
 	z-index: 900;
 }
 
-#lightbox {
+#infoBox {
 	width: 900px;
 	height: 620px;
 	left: 50%;
@@ -572,7 +572,7 @@ nav a:hover, nav a.current {
 	display: none;
 }
 
-#lightbox #closeLB {
+#infoBox #closeLB {
 	position: absolute;
 	right: 22px;
 	top: 28px;
@@ -583,12 +583,12 @@ nav a:hover, nav a.current {
 	cursor: pointer;
 }
 
-#lightbox #closeLB:hover {
+#infoBox #closeLB:hover {
 	color: #000;
 	text-shadow: 0 0 8px rgba(255,255,255,0.8);
 }
 
-#lightbox > .inner {
+#infoBox > .inner {
 	background: url(images/aboutbg.png) repeat;
 	min-height: 570px;
 	border-radius: 35px 35px 0 0;
@@ -596,7 +596,7 @@ nav a:hover, nav a.current {
 	color: #eebd04;
 }
 
-#lightbox h2 {
+#infoBox h2 {
 	font-size: 50px;
 	padding: 90px 20px 20px;
 	box-shadow: 0 2px 0 rgba(0,0,0,0.2);
@@ -607,7 +607,7 @@ nav a:hover, nav a.current {
 	text-align: center;
 }
 
-#lightbox h3 {
+#infoBox h3 {
 	font-size: 24px;
 	font-weight: bold;
 	font-family: 'Molengo', Georgia, Times, serif;
@@ -620,12 +620,12 @@ nav a:hover, nav a.current {
 	text-shadow: 2px 2px 0 black, 2px 2px 3px #909090;
 }
 
-#lightbox h4 {
+#infoBox h4 {
 	font-size: 18px;
 	font-family: 'Molengo', Georgia, Times, serif;
 }
 
-#lightbox p, #lightbox li {
+#infoBox p, #infoBox li {
 	font-family: 'Lekton', Helvetica, Arial, sans-serif;
 	font-size: 16px;
 	line-height: 22px;
@@ -633,33 +633,33 @@ nav a:hover, nav a.current {
 	text-shadow: 1px 1px rgba(0,0,0,0.3);
 }
 
-#lightbox strong {
+#infoBox strong {
 	font-weight: bold;
 }
 
-#lightbox article {
+#infoBox article {
 	position: relative;
 	padding: 20px;
 }
 
-#lightbox .about {
+#infoBox .about {
 	background: url(images/aboutbg.png) repeat;
 	color: #eebd04;
 	text-shadow: 1px 1px 0 #fff !important;
 }
 
-#lightbox .infoHouse {
+#infoBox .contactHouse {
     color: #eebd04;
     text-shadow: 1px 1px 0 #fff !important;
 }
 
-#lightbox .about h2 {
+#infoBox .about h2 {
 	background: url(images/aboutme.png);
 	text-shadow: none;
 	box-shadow: none;
 }
 
-#lightbox .about img {
+#infoBox .about img {
 	height: 60%;
 	position: absolute;
 	right: 0;
@@ -667,40 +667,40 @@ nav a:hover, nav a.current {
 	border-radius: 25%;
 }
 
-#lightbox .about article {
+#infoBox .about article {
 	width: 60%;
 	padding: 20px;
 }
 
-#lightbox .about article p {
+#infoBox .about article p {
 	margin-bottom: 15px;
 }
 
-#lightbox .about article p:last-child {
+#infoBox .about article p:last-child {
 	margin-bottom: 0;
 }
 
-#lightbox .info {
+#infoBox .contact {
 	background: url(images/aboutbg.png) repeat;
 	color: #222;
 	text-shadow: 1px 1px 0 #fff !important;
 }
 
-#lightbox .info h2 {
+#infoBox .contact h2 {
 	background: url(images/contactme.png);
 	text-shadow: none;
 	box-shadow: none;
 }
 
-#lightbox .info h4 {
+#infoBox .contact h4 {
 	color: #eebd04;
 }
 
-#lightbox .info p {
+#infoBox .contact p {
 	text-shadow: 1px 1px 0 #fff;	
 }
 
-#lightbox .info img {
+#infoBox .contact img {
 	height: 75%;
 	position: absolute;
 	right: 0;
@@ -708,116 +708,116 @@ nav a:hover, nav a.current {
 	border-radius: 25%;
 }
 
-#lightbox .info article {
+#infoBox .contact article {
 	width: 50%;
 	padding: 20px;
 }
 
-#lightbox .info article p {
+#infoBox .contact article p {
 	margin-bottom: 15px;
 	color: #eebd04;
 }
 
-#lightbox .info article p:last-child {
+#infoBox .contact article p:last-child {
 	margin-bottom: 0;
 }
 
-#lightbox .inner.services {
+#infoBox .inner.skills {
 	padding: 0;
 }
 
-#lightbox .skills section {
+#infoBox .skills section {
 	float: left;
 	width: 50%;
 	margin: 0;
 	padding: 0;
 }
 
-#lightbox .skills h2 {
+#infoBox .skills h2 {
 	background: url(images/skillsme.png);
 	text-shadow: none;
 	box-shadow: none;
 }
 
-#lightbox .inner.exp {
+#infoBox .inner.exerpeince {
 	padding: 0;
 }
 
-#lightbox .exp section {
+#infoBox .exerpeince section {
 	float: left;
 	width: 50%;
 	margin: 0;
 	padding: 0;
 }
 
-#lightbox .exp h2 {
+#infoBox .exerpeince h2 {
 	background: url(images/expme.png);
 	text-shadow: none;
 	box-shadow: none;
 }
 
-#lightbox .box {
+#infoBox .box {
 	position: relative;
 	display: block;
 	padding: 0 30px;
 }
 
-#lightbox div.box:first-of-type {
+#infoBox div.box:first-of-type {
 	padding-top: 30px;
 }
 
-#lightbox .box:last-child {
+#infoBox .box:last-child {
 	margin-bottom: 0;
 }
 
-#lightbox .skills ul { 
+#infoBox .skills ul { 
 	padding: 0 40px 15px;
 	margin-bottom: 0;
 	box-shadow: -2px 0 0 rgba(0,0,0,0.2);
 }
 
-#lightbox .skills ul li {
+#infoBox .skills ul li {
     margin: 0;
     padding: 4px 5px 2px 30px;
     background: url(images/skillicon.png) no-repeat left 5px;
 }
 
-#lightbox .exp ul li {
+#infoBox .exerpeince ul li {
     margin: 0;
     padding: 0px 5px 0px 30px;
     background: url(images/skillicon.png) no-repeat left 5px;
 }	
 
-#lightbox .skills ul:first-of-type {
+#infoBox .skills ul:first-of-type {
 	padding-top: 30px;
 }
 
-#lightbox .skills ul:last-child {
+#infoBox .skills ul:last-child {
 	padding-bottom: 30px;
 }
 
-#lightbox .exp ul { 
+#infoBox .exerpeince ul { 
 	padding: 0 10px 10px;
 	margin-bottom: 0;
 	box-shadow: -2px 0 0 rgba(0,0,0,0.2);
 }
 
-#lightbox .exp ul:first-of-type {
+#infoBox .exerpeince ul:first-of-type {
 	padding-top: 30px;
 }
 
-#lightbox .exp ul:last-child {
+#infoBox .exerpeince ul:last-child {
 	padding-bottom: 30px;
 }
 
-#lightbox .box .icon {
+#infoBox .box .icon {
 	float: left;
 	width: 64px;
 	height: 64px;
 	background: url(images/achievementicon.png) no-repeat 0 0;
 }
 
-#lightbox .box h4 {
+#infoBox .box h4 {
 	float: left;
 	width: 280px;
 	padding: 10px;
@@ -825,27 +825,27 @@ nav a:hover, nav a.current {
 	font-family: 'Molengo', Georgia, Times, serif;
 }
 
-#lightbox .box p {
+#infoBox .box p {
 	padding: 0 10px;
 	float: left;
 	width: 300px;
 }
 
-#lightbox .skills > section ul li {
+#infoBox .skills > section ul li {
 	margin: 0;
 	padding: 4px 5px 2px 0;
 	background: url(images/check.png) no-repeat left 5px;
 }
 
-#lightbox .exp > section ul li {
+#infoBox .exerpeince > section ul li {
 	margin: 0;
 	padding: 4px 5px 2px 0;
 	background: url(images/check.png) no-repeat left 5px;
 }
 
-#lightbox #sCode.box .icon { background-position: 0 0; } 
+#infoBox #sCode.box .icon { background-position: 0 0; } 
 
-#lightbox .portfolioBox {
+#infoBox .projectsBox {
 	float: left;
 	width: 25%;
 	text-align: center;
@@ -853,13 +853,13 @@ nav a:hover, nav a.current {
 	z-index: 1;
 }
 
-#lightbox .portfolio h2 {
+#infoBox .projects h2 {
 	background: url(images/projectme.png);
 	text-shadow: none;
 	box-shadow: none;
 }
 
-#lightbox .portfolioBox .inner {
+#infoBox .projectsBox .inner {
 	padding: 20px;
 	height: 150px;
 	-webkit-transition: all 0.5s ease 0s;
@@ -867,12 +867,12 @@ nav a:hover, nav a.current {
 	transition: all 0.5s ease 0s;
 }
 
-#lightbox .portfolioBox h4 {
+#infoBox .projectsBox h4 {
 	font-size: 16px;
 	text-shadow: 0 1px 0 rgba(0,0,0,0.6);
 }
 
-#lightbox .portfolioBox .portfolioImg {
+#infoBox .projectsBox .projectsImg {
 	display: block;
 	width: 100px;
 	height: 100px;
@@ -887,7 +887,7 @@ nav a:hover, nav a.current {
 	transition: all 0.5s ease 0s;
 }
 
-#lightbox .portfolioBox .portfolioImg::after {
+#infoBox .projectsBox .projectsImg::after {
 	width: 100px;
 	height: 20px;
 	background: rgba(0, 0, 0, 0.2);
@@ -899,7 +899,7 @@ nav a:hover, nav a.current {
 	z-index: -1;
 }
 
-#lightbox .portfolioBox img {
+#infoBox .projectsBox img {
 	width: 100px;
 	height: 100px;
 	-webkit-transition: all 0.5s ease 0s;
@@ -907,7 +907,7 @@ nav a:hover, nav a.current {
 	transition: all 0.5s ease 0s;
 }
 
-#lightbox .portfolioBox p {
+#infoBox .projectsBox p {
 	margin-bottom: 0;
 	font-size: 14px;
 	line-height: 18px;
@@ -920,23 +920,23 @@ nav a:hover, nav a.current {
 	transition: all 0.3s ease 0s;
 }
 
-#lightbox .portfolioBox:hover .inner {
+#infoBox .projectsBox:hover .inner {
 	
 }
 
-#lightbox .portfolioBox:hover .inner p {
+#infoBox .projectsBox:hover .inner p {
 	text-shadow: 1px 1px 0 #000;	
 	opacity: 1;
 	background: rgba(0,0,0,0.4);
 }
 
-#lightbox .portfolioBox:hover .portfolioImg {
+#infoBox .projectsBox:hover .projectsImg {
 	border-radius: 10px;
 	background: rgba(0,0,0,0.5);
 	border: 1px solid #000;
 }
 
-#lightbox .portfolioBox:hover img {
+#infoBox .projectsBox:hover img {
 	border-radius: 5px;
 }
 
@@ -945,59 +945,59 @@ nav a:hover, nav a.current {
 	display: none;
 }
 
-#lightbox .intro article > p {
+#infoBox .intro article > p {
 	font-family: 'Molengo', Georgia, Times, serif;
 	font-size: 16px;
 }
 
-#lightbox .intro .box {
+#infoBox .intro .box {
 	width: 100%;
 	padding: 0 30px;
 }
 
-#lightbox .intro h2 {
+#infoBox .intro h2 {
 	background: url(images/welcomeme.png);
 	text-shadow: none;
 	box-shadow: none;
 }
 
-#lightbox .intro div.box:first-of-type {
+#infoBox .intro div.box:first-of-type {
 	padding-top: 20px;
 }
 
-#lightbox .intro .box p {
+#infoBox .intro .box p {
 	width: 700px;
 	padding-top: 14px;
 	padding-left: 20px;
 	font-size: 18px;
 }
 
-#lightbox .intro .box .icon {
+#infoBox .intro .box .icon {
 	width: 40px;
 	height: 40px;
 }
 
-#lightbox .intro .box#orbsIcon .icon {
+#infoBox .intro .box#orbsIcon .icon {
 	background-image: url(images/orbs.png);
 } 
 
-#lightbox .intro .box#mouseIcon .icon {
+#infoBox .intro .box#mouseIcon .icon {
 	background-image: url(images/mouse.png);
 } 
 
-#lightbox .intro .box#arrowIcon .icon {
+#infoBox .intro .box#arrowIcon .icon {
 	background-image: url(images/arrow.png);
 } 
 
-#lightbox .intro .box#menuIcon .icon {
+#infoBox .intro .box#menuIcon .icon {
 	background-image: url(images/inventory.png);
 }  
 
-#lightbox .intro .box#houseIcon .icon {
+#infoBox .intro .box#houseIcon .icon {
 	background-image: url(images/house.png);
 } 
 
-#lightbox .intro .box#tabsIcon .icon {
+#infoBox .intro .box#tabsIcon .icon {
 	background-image: url(images/tabsicon.png);
 } 
 
