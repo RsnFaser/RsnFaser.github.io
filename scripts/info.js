@@ -77,7 +77,7 @@ var pohs = [
 ];
 
 
-var notifications = [
+var chatboxs = [
 	{
 		id: 1,
 		type: '',
@@ -93,7 +93,7 @@ var notifications = [
 	{
 		id: 3,
 		type: '',
-		text: 'You are about to leave the Profile Exchange',
+		text: 'Thank you for visiting the Profile Exchange!',
 		img: 'images/chathead.gif'
 	},
 	{

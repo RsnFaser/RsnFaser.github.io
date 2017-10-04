@@ -1,59 +1,75 @@
-var Game = function() {
-	this.player = $("#rscharacter");	
+var PlayRS = function() {
+	// Set Rs player
+	this.player = $("#rscharacter");
+	// Set top position
 	this.positionTop = 0;
+	// Set left position
 	this.positionLeft = $(window).width() / 2 - this.player.width() / 2;
+	// init
 	this.init();
 }
 
-Game.constructor = Game;
+// Constructor
+PlayRS.constructor = PlayRS;
 
-Game.prototype = {
+// Main Game
+PlayRS.prototype = {
 	
+	// Init Function
 	init: function() {
+		//Set Rs Player and intro
 		this.player.css('left', this.positionLeft + 'px');
-		this.eventsHandler();	
+		this.eventsHandler();
 		this.intro();
 		$('nav a:first').addClass('current');
 	},
 
+	// Get Intro screen
 	intro: function() {
-		var isFirstTime = localStorage.getItem('isYourFirstTime');
-		if(!isFirstTime) {
+		var StartScreen = localStorage.getItem('isStartScreen');
+		if(!StartScreen) {
 			this.createInfoBox('#intro', false);
-			localStorage.setItem('isYourFirstTime', false);	
+			localStorage.setItem('isStartScreen', false);	
 		}
 	},
 
+	// Event Handler
 	eventsHandler: function() {
+		// Set rs and player
 		var me = this;
 		var player = this.player;
 		
+		// resize window
 		$(window).resize(function(){
 			player.css('left', $(window).width() / 2 - player.width() / 2 + 'px');
 		});				
 		
+		// Check where you can click
 		$('.tiles, .exitRoad').unbind('click').bind('click', function(e){
 			var x = e.pageX - player.width() / 2;
 			var y = e.pageY;
-			var canMove = me.checkMove(x, y, true);
-			if(canMove === true) {				
+			var checkMove = me.checkMove(x, y, true);
+			if(checkMove === true) {				
 				me.teleport(x, y);
 				me.popupChatbox(y);
 			}
 			else {
-				me.showChatBox(notifications[0]);
+				me.showChatBox(chatboxs[0]);
 			}
 		});
 		
+		// Show chatbox at exit
 		$('.exit').unbind('click').bind('click', function(e){			
-			me.showChatBox(notifications[3]);
+			me.showChatBox(chatboxs[3]);
 		});
 		
+		// Get inside POH
 		$('.poh').unbind('click').bind('click', function(){
 			var target = '#' + $(this).attr('id');
 			me.goToPoh(target);
 		});
 
+		// Set up the navigation bar
 		$('nav a').click(function(e){
 			e.preventDefault();
 			var target = $(this).attr('href');
@@ -71,6 +87,7 @@ Game.prototype = {
 			me.goToPoh(target);
 		});
 
+		// Set up the arrows keybinds
 		$(window).unbind('keydown').bind('keydown', function(event) {
 			if(me.positionTop > parseFloat($('#startText').css('top'))) {
 				$('#startText').fadeOut('fast', function(){
@@ -79,22 +96,22 @@ Game.prototype = {
 			}
 			switch (event.keyCode) {
 				case 37:					
-					me.moveX(me.positionLeft - 5, 'left');
+					me.mX(me.positionLeft - 5, 'left');
 					event.preventDefault();
 				break;
 
 				case 39:
-					me.moveX(me.positionLeft + 5, 'right');
+					me.mX(me.positionLeft + 5, 'right');
 					event.preventDefault();
 				break;
 
 				case 38:
-					me.moveY(me.positionTop - 5, 'up');
+					me.mY(me.positionTop - 5, 'up');
 					event.preventDefault();
 				break;
 
 				case 40:
-					me.moveY(me.positionTop + 5, 'down');
+					me.mY(me.positionTop + 5, 'down');
 					event.preventDefault();
 				break;
 				
@@ -118,36 +135,40 @@ Game.prototype = {
 				player.removeAttr('class').destroy();
 		});	
 
-		$("#notifications").find('.close').live('click', function(){
+		//Hide chatbox
+		$("#chatbox").find('.close').live('click', function(){
 			me.hideChatBox();
 		});
-		
+		//Close info box
 		$("#backgroundBox, #closeLB").die('click').live('click', function(){
 			me.closeInfoBox();
 		});
 	},
 
-	showChatBox: function(notification) {
+	// Function to show Chatbox
+	showChatBox: function(chatbox) {
 		var me = this;		
-		$("#notifications").css('bottom', 0);
-		if(!$("#notifications").find('.inner').attr('id') || $("#notifications").find('.inner').text() != notification.text){
-			$("#notifications").find('.inner').attr('id', notification.type).fadeOut('fast', function(){
-				$(this).html('<img src="' + notification.img + '" />' + notification.text).fadeIn('fast');
+		$("#chatbox").css('bottom', 0);
+		if(!$("#chatbox").find('.inner').attr('id') || $("#chatbox").find('.inner').text() != chatbox.text){
+			$("#chatbox").find('.inner').attr('id', chatbox.type).fadeOut('fast', function(){
+				$(this).html('<img src="' + chatbox.img + '" />' + chatbox.text).fadeIn('fast');
 			});
 		}
 	},
 
+	// Function to hide chatbox
 	hideChatBox: function() {
-		$("#notifications").css('bottom', '-150px');
+		$("#chatbox").css('bottom', '-150px');
 	},
 
+	// Function to pop up the chatbox
 	popupChatbox: function(y) {
 		if(y >= 200) {
 			$('nav').addClass('show');
 			if(y >= 200 && y < 205) {
-				this.showChatBox(notifications[1]);
+				this.showChatBox(chatboxs[1]);
 			}
-			else if(y > 1100 && $("#notifications").find('.inner').text() == notifications[1].text) {
+			else if(y > 1100 && $("#chatbox").find('.inner').text() == chatboxs[1].text) {
 				this.hideChatBox();
 			}
 		}
@@ -156,6 +177,7 @@ Game.prototype = {
 		}
 	},
 
+	// Function to teleport around the map
 	teleport: function(x, y) {		
 		this.positionTop = y;
 		this.positionLeft = x;
@@ -169,7 +191,57 @@ Game.prototype = {
 			$('html, body').animate({scrollTop: y - 400}, 'slow');
 		}
 	},
-
+	
+	// Function to move player
+	movePlayer: function(dir, state) {								
+		var player = this.player;
+		if(!player.hasClass(dir)) {
+			player.addClass(dir);
+			player.sprite({fps: 9, no_of_frames: 3}).spState(state);						
+		}				
+	},	
+	
+	// Function to move player x-wards
+	mX: function(x, dir) {
+		var player = this.player;
+		var checkMove = this.checkMove(x, null);	
+		if(checkMove){
+			this.positionLeft = x;
+			player.animate({'left': x + 'px'}, 10);
+		}
+		if(dir == 'left') {
+			this.movePlayer('left', 2);
+		}
+		else {
+			this.movePlayer('right', 3);
+		}
+	},
+	
+	// Function to move player y-wards
+	mY: function(y, dir) {
+		var player = this.player;
+		var checkMove = this.checkMove(null, y);	
+		if(checkMove) {
+			if(this.positionTop >= 200) {
+				if(dir == 'up') {
+					$('html, body').animate({scrollTop: $(document).scrollTop() - 5}, 10);
+				}
+				else {
+					$('html, body').animate({scrollTop: $(document).scrollTop() + 5}, 10);
+				}
+			}
+			this.positionTop = y;
+			player.animate({'top': y + 'px'}, 10);
+		}
+		if(dir == 'up') {
+			this.movePlayer('up', 4);
+		}
+		else {
+			this.movePlayer('down', 1);
+		}
+	},
+	
+	// Function to go to poh
 	goToPoh: function(target) {
 		var poh;
 		for(i = 0; i < pohs.length; i++) {
@@ -186,60 +258,15 @@ Game.prototype = {
 		else {
 			x = $(window).width() - poh.width - poh.right + poh.enter.left;
 		}
-		var canMove = this.checkMove(x, y, true);
-		if(canMove) {
+		var checkMove = this.checkMove(x, y, true);
+		if(checkMove) {
 			this.positionTop = y;
 			this.positionLeft = x;
 			this.teleport(x, y);
 		}
-	},
-	
-	moveX: function(x, dir) {
-		var player = this.player;
-		var canMove = this.checkMove(x, null);	
-		if(canMove){
-			this.positionLeft = x;
-			player.animate({'left': x + 'px'}, 10);
-		}
-		if(dir == 'left') {
-			this.moveAround('left', 2);
-		}
-		else {
-			this.moveAround('right', 3);
-		}
-	},
-	
-	moveY: function(y, dir) {
-		var player = this.player;
-		var canMove = this.checkMove(null, y);	
-		if(canMove) {
-			if(this.positionTop >= 200) {
-				if(dir == 'up') {
-					$('html, body').animate({scrollTop: $(document).scrollTop() - 5}, 10);
-				}
-				else {
-					$('html, body').animate({scrollTop: $(document).scrollTop() + 5}, 10);
-				}
-			}
-			this.positionTop = y;
-			player.animate({'top': y + 'px'}, 10);
-		}
-		if(dir == 'up') {
-			this.moveAround('up', 4);
-		}
-		else {
-			this.moveAround('down', 1);
-		}
-	},
+	},	
 
-	moveAround: function(dir, state) {								
-		var player = this.player;
-		if(!player.hasClass(dir)) {
-			player.addClass(dir);
-			player.sprite({fps: 9, no_of_frames: 3}).spState(state);						
-		}				
-	},
-	
+	// Function to open info boxes inside poh
 	insidePoh: function(elmLeft, elmTop) {
 		var player = this.player;
 		var isinsidePoh = [];
@@ -286,48 +313,49 @@ Game.prototype = {
 		return isinsidePoh;
 	},
 
+	// Function on where to click on the tiles
 	onTiles: function(elmLeft, elmTop) {
 		var player = this.player;
 		var mainRoad = $("#tilesFloor");
-		var isOnRoad = true;
+		var onTiles = true;
 
-		// Check if the player is out of boundries
 		if(elmLeft < 0 || elmLeft >= parseFloat(player.parent().width()) - parseFloat(player.width()) || elmTop < 0 || elmTop > parseFloat(player.parent().height()) - parseFloat(player.height())) {
-			isOnRoad = false;
+			onTiles = false;
 		}
 		else if(elmLeft < ($(window).width() / 2 - mainRoad.width() / 2) || elmLeft > ($(window).width() / 2 + mainRoad.width() / 2) - player.width()) {
 			for(i = 0; i < roads.length; i++) {
 				if(elmTop > roads[i].top && elmTop < roads[i].top + roads[i].height - player.height()) {
 					if(roads[i].direction == 'left') {
 						if(elmLeft < ($(window).width() / 2 + mainRoad.width() / 2) - player.width()) {
-							isOnRoad = true;
+							onTiles = true;
 						}
 						else {
-							isOnRoad = false;	
+							onTiles = false;	
 						}
 					}
 					else if(roads[i].direction == 'right') {
 						if(elmLeft >= ($(window).width() / 2 + mainRoad.width() / 2) - player.width()) {
-							isOnRoad = true;
+							onTiles = true;
 						}
 						else {
-							isOnRoad = false;
+							onTiles = false;
 						}
 					}
 					else {
-						isOnRoad = false;
+						onTiles = false;
 					}
 					break;
 				}
 				else {
-					isOnRoad = false;
+					onTiles = false;
 				}
 			}		
 		}		
 
-		return isOnRoad;
+		return onTiles;
 	},
 
+	// Function to check the movement of character
 	checkMove: function(moveLeft, moveTop, teleported) {
 		var player = this.player;
 		var elmLeft = moveLeft || this.positionLeft;
@@ -336,10 +364,9 @@ Game.prototype = {
 		if(player.css('display') == 'none' && !teleported) {
 			return false;
 		}
-		
-		// Check if the player is around a house
-		var isHouse = this.insidePoh(elmLeft, elmTop);							
-		if(isHouse.indexOf(false) >= 0) {
+
+		var checkHouse = this.insidePoh(elmLeft, elmTop);							
+		if(checkHouse.indexOf(false) >= 0) {
 			return false;
 		}
 
@@ -348,9 +375,8 @@ Game.prototype = {
 			return false;
 		}
 		
-		// Sea Handler
 		if(elmTop > $('#mainFloor').height() - $('#exiting').height() - player.height()) {
-			this.showChatBox(notifications[2]);
+			this.showChatBox(chatboxs[2]);
 			if(elmLeft > $(window).width() / 2 - $('#exitingRoad').width() / 2 && elmLeft < $(window).width() / 2 + $('#exitingRoad').width() / 2 - player.width()) {				
 				if(elmTop > $('#mainFloor').height() - $('#exiting').height() + $("#exitingRoad").height() - 100 - player.height()) {
 				 	return false;
@@ -360,24 +386,21 @@ Game.prototype = {
 			else {
 				return false;
 			}
-		}
-
+		}	
 		return true;
 	},
-	
-	createInfoBox:  function(elm, effectMenu) {
+
+	// Function to create infobox
+	createInfoBox:  function(elm, effectmenu) {
 		var me = this;
 		if($("#backgroundBox").length < 1) {			
-			if(effectMenu) {
-				// Update the current menu
+			if(effectmenu) {
 				$('nav a').removeClass('current');
 				$('nav a[href="' + elm + '"]').addClass('current');	
 			}
 			
-			// Get the relevant content
 			var content = $(elm).find('.infoBox').html();
 
-			// Creates the infoBox
 			$('<div id="backgroundBox"></div>').appendTo('body').fadeIn();
 			$('<div id="infoBox">' + content + '<span id="closeLB">x</span></div>').insertAfter("#backgroundBox").delay(1000).fadeIn();
 
@@ -392,12 +415,13 @@ Game.prototype = {
 		}		
 	},
 	
+	// Function to close info box
 	closeInfoBox: function() {
 		var me = this;
 		$('#backgroundBox, #infoBox').fadeOut('fast', function(){
-			var canMove = me.checkMove(me.positionLeft, me.positionTop + 80);
-			if(canMove) {				
-				me.moveAround('down', 1);
+			var checkMove = me.checkMove(me.positionLeft, me.positionTop + 80);
+			if(checkMove) {				
+				me.movePlayer('down', 1);
 				me.player.animate({'top': me.positionTop + 80}, function(){
 					me.player.removeAttr('class').destroy();
 				});

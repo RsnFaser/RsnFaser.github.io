@@ -1,4 +1,5 @@
-ul,p,dl,hr,h1,h2,h3,h4,h5,h6,pre,table,address,fieldset, blockquote {
+/*Default */
+ul,p,dl,hr,h1,h2,h3,h4,h5,h6,pre,fieldset, blockquote {
 	margin-bottom: 20px;
 }
 
@@ -40,8 +41,81 @@ body {
 	overflow: hidden;
 }
 
-/* Loading game */
+@-webkit-keyframes fade {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
 
+@-moz-keyframes fade {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@-keyframes fade {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;	
+	}
+}
+/* End */
+
+/* IE Page */
+body.ie {
+	overflow: auto;
+}
+
+#container {
+	margin: 50px auto 0;
+	width: 960px;
+	font-family: helvetica, arial;
+	position: relative;
+	font-size: 14px;
+}
+
+#container strong {
+	font-weight: bold;
+}
+
+#container h1 {
+	font-size: 68px;
+	font-weight: bold;
+	line-height: 76px;
+}
+
+#container h3 {
+	font-size: 26px;
+	color: #454545;
+}
+
+#container .me {
+	width: 32px;
+	height: 32px;
+	background: url(images/walkingMe.png) no-repeat 0 0;
+	position: absolute;	right: 310px;
+	top: 85px;
+}
+/* End */
+
+/* Loading game */
 #splashScreen {
 	position: fixed;
 	top: 0;
@@ -103,7 +177,6 @@ nav a:hover, nav a.current {
 /* End */
 
 /* Minimap and Chatbox */
-
 #minimap {
 	position: fixed;
 	z-index: 700;
@@ -117,7 +190,7 @@ nav a:hover, nav a.current {
 	border-radius: 5px 0 0 5px;
 }
 
-#notifications {
+#chatbox {
 	position: fixed;
 	left: 0%;
 	bottom: -150px;
@@ -128,30 +201,30 @@ nav a:hover, nav a.current {
 	font-size: larger;
 }
 
-#notifications .inner {
+#chatbox .inner {
 	padding: 40px 50px 20px 140px;
 	font-size: large;
 }
 
-#notifications img {
+#chatbox img {
 	height: 90px;
 	position: absolute;
 	left: 20px;
 	top: 25px;
 }
 
-#notifications .close {
+#chatbox .close {
 	position: absolute;
 	right: 35px;
-	top: 10px;
-	color: #a7a7a7;
+	top: 15px;
+	color: #fff;
 	cursor: pointer;
+	font-size: large;
 }
 
-#notifications .close:hover {
+#chatbox .close:hover {
 	color: #444;
 }
-
 /* End */
 
 /* Top Wall */
@@ -201,7 +274,6 @@ nav a:hover, nav a.current {
 /* End */
 
 /* Roads */
-
 .tiles {
 	position: absolute;
 	background: url(images/road.png) repeat;
@@ -219,7 +291,6 @@ nav a:hover, nav a.current {
 /* End */
 
 /* Rs Character */
-
 #rscharacter {
 	position: absolute;
 	width: 48px;
@@ -259,7 +330,7 @@ nav a:hover, nav a.current {
 }
 /* End */
 
-/* Houses */
+/* Poh */
 .poh {
 	position: absolute;
 	z-index: 56;
@@ -318,46 +389,7 @@ nav a:hover, nav a.current {
 }
 /* End */
 
-@-webkit-keyframes fade {
-	0% {
-		opacity: 1;
-	}
-	50% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
-}
-
-@-moz-keyframes fade {
-	0% {
-		opacity: 1;
-	}
-	50% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
-}
-
-@-keyframes fade {
-	0% {
-		opacity: 1;
-	}
-	50% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;	
-	}
-}
-
-
 /* Exit */
-
-
 .exit {
 	position: absolute;
 	left: 0;
@@ -456,7 +488,6 @@ nav a:hover, nav a.current {
 /* End */
 
 /* Signs */
-
 .sign {
 	position: absolute;
 	background: url(images/sign.png) no-repeat center;
@@ -544,7 +575,6 @@ nav a:hover, nav a.current {
 /* End */
 
 /* Information Box */
-
 .poh .infoBox {
 	display: none;
 }
@@ -642,15 +672,47 @@ nav a:hover, nav a.current {
 	padding: 20px;
 }
 
+#infoBox .box {
+	position: relative;
+	display: block;
+	padding: 0 30px;
+}
+
+#infoBox div.box:first-of-type {
+	padding-top: 30px;
+}
+
+#infoBox .box:last-child {
+	margin-bottom: 0;
+}
+
+#infoBox .box .icon {
+	float: left;
+	width: 64px;
+	height: 64px;
+	background: url(images/achievementicon.png) no-repeat 0 0;
+}
+
+#infoBox .box h4 {
+	float: left;
+	width: 280px;
+	padding: 10px;
+	margin-bottom: 0;
+	font-family: 'Molengo', Georgia, Times, serif;
+}
+
+#infoBox .box p {
+	padding: 0 10px;
+	float: left;
+	width: 300px;
+}
+
+#infoBox #sCode.box .icon { background-position: 0 0; } 
+
 #infoBox .about {
 	background: url(images/aboutbg.png) repeat;
 	color: #eebd04;
 	text-shadow: 1px 1px 0 #fff !important;
-}
-
-#infoBox .contactHouse {
-    color: #eebd04;
-    text-shadow: 1px 1px 0 #fff !important;
 }
 
 #infoBox .about h2 {
@@ -680,48 +742,7 @@ nav a:hover, nav a.current {
 	margin-bottom: 0;
 }
 
-#infoBox .contact {
-	background: url(images/aboutbg.png) repeat;
-	color: #222;
-	text-shadow: 1px 1px 0 #fff !important;
-}
-
-#infoBox .contact h2 {
-	background: url(images/contactme.png);
-	text-shadow: none;
-	box-shadow: none;
-}
-
-#infoBox .contact h4 {
-	color: #eebd04;
-}
-
-#infoBox .contact p {
-	text-shadow: 1px 1px 0 #fff;	
-}
-
-#infoBox .contact img {
-	height: 75%;
-	position: absolute;
-	right: 0;
-	margin: 20px;
-	border-radius: 25%;
-}
-
-#infoBox .contact article {
-	width: 50%;
-	padding: 20px;
-}
-
-#infoBox .contact article p {
-	margin-bottom: 15px;
-	color: #eebd04;
-}
-
-#infoBox .contact article p:last-child {
-	margin-bottom: 0;
-}
-
+/**/
 #infoBox .inner.skills {
 	padding: 0;
 }
@@ -739,6 +760,32 @@ nav a:hover, nav a.current {
 	box-shadow: none;
 }
 
+#infoBox .skills ul { 
+	padding: 0 40px 15px;
+	margin-bottom: 0;
+	box-shadow: -2px 0 0 rgba(0,0,0,0.2);
+}
+
+#infoBox .skills ul li {
+    margin: 0;
+    padding: 4px 5px 2px 30px;
+    background: url(images/skillicon.png) no-repeat left 5px;
+}
+
+#infoBox .skills ul:first-of-type {
+	padding-top: 30px;
+}
+
+#infoBox .skills ul:last-child {
+	padding-bottom: 30px;
+}
+
+#infoBox .skills > section ul li {
+	margin: 0;
+	padding: 4px 5px 2px 0;
+	background: url(images/check.png) no-repeat left 5px;
+}
+/**/
 #infoBox .inner.exerpeince {
 	padding: 0;
 }
@@ -756,45 +803,11 @@ nav a:hover, nav a.current {
 	box-shadow: none;
 }
 
-#infoBox .box {
-	position: relative;
-	display: block;
-	padding: 0 30px;
-}
-
-#infoBox div.box:first-of-type {
-	padding-top: 30px;
-}
-
-#infoBox .box:last-child {
-	margin-bottom: 0;
-}
-
-#infoBox .skills ul { 
-	padding: 0 40px 15px;
-	margin-bottom: 0;
-	box-shadow: -2px 0 0 rgba(0,0,0,0.2);
-}
-
-#infoBox .skills ul li {
-    margin: 0;
-    padding: 4px 5px 2px 30px;
-    background: url(images/skillicon.png) no-repeat left 5px;
-}
-
 #infoBox .exerpeince ul li {
     margin: 0;
     padding: 0px 5px 0px 30px;
     background: url(images/skillicon.png) no-repeat left 5px;
 }	
-
-#infoBox .skills ul:first-of-type {
-	padding-top: 30px;
-}
-
-#infoBox .skills ul:last-child {
-	padding-bottom: 30px;
-}
 
 #infoBox .exerpeince ul { 
 	padding: 0 10px 10px;
@@ -810,44 +823,15 @@ nav a:hover, nav a.current {
 	padding-bottom: 30px;
 }
 
-#infoBox .box .icon {
-	float: left;
-	width: 64px;
-	height: 64px;
-	background: url(images/achievementicon.png) no-repeat 0 0;
-}
-
-#infoBox .box h4 {
-	float: left;
-	width: 280px;
-	padding: 10px;
-	margin-bottom: 0;
-	font-family: 'Molengo', Georgia, Times, serif;
-}
-
-#infoBox .box p {
-	padding: 0 10px;
-	float: left;
-	width: 300px;
-}
-
-#infoBox .skills > section ul li {
-	margin: 0;
-	padding: 4px 5px 2px 0;
-	background: url(images/check.png) no-repeat left 5px;
-}
-
 #infoBox .exerpeince > section ul li {
 	margin: 0;
 	padding: 4px 5px 2px 0;
 	background: url(images/check.png) no-repeat left 5px;
 }
-
-#infoBox #sCode.box .icon { background-position: 0 0; } 
-
+/**/
 #infoBox .projectsBox {
 	float: left;
-	width: 25%;
+	width: 33%;
 	text-align: center;
 	position: relative;
 	z-index: 1;
@@ -862,9 +846,6 @@ nav a:hover, nav a.current {
 #infoBox .projectsBox .inner {
 	padding: 20px;
 	height: 150px;
-	-webkit-transition: all 0.5s ease 0s;
-	-moz-transition: all 0.5s ease 0s;
-	transition: all 0.5s ease 0s;
 }
 
 #infoBox .projectsBox h4 {
@@ -874,37 +855,17 @@ nav a:hover, nav a.current {
 
 #infoBox .projectsBox .projectsImg {
 	display: block;
-	width: 100px;
-	height: 100px;
+	width: 150px;
+	height: 150px;
 	padding: 5px;
-	border: 1px solid #e7e7e7;
-	background: #fff;
 	margin: 0 auto 10px;
 	box-shadow: 0 1px 2px rgba(0,0,0,0.4);
 	position: relative;
-	-webkit-transition: all 0.5s ease 0s;
-	-moz-transition: all 0.5s ease 0s;
-	transition: all 0.5s ease 0s;
-}
-
-#infoBox .projectsBox .projectsImg::after {
-	width: 100px;
-	height: 20px;
-	background: rgba(0, 0, 0, 0.2);
-	border-radius: 50px / 10px;
-	content: "";
-	position: absolute;
-	left: 3px;
-	bottom: -10px;
-	z-index: -1;
 }
 
 #infoBox .projectsBox img {
-	width: 100px;
-	height: 100px;
-	-webkit-transition: all 0.5s ease 0s;
-	-moz-transition: all 0.5s ease 0s;
-	transition: all 0.5s ease 0s;
+	width: 150px;
+	height: 150px;
 }
 
 #infoBox .projectsBox p {
@@ -915,9 +876,6 @@ nav a:hover, nav a.current {
 	opacity: 0;
 	padding: 5px;
 	border-radius: 3px;
-	-webkit-transition: all 0.3s ease 0s;
-	-moz-transition: all 0.3s ease 0s;
-	transition: all 0.3s ease 0s;
 }
 
 #infoBox .projectsBox:hover .inner {
@@ -938,6 +896,48 @@ nav a:hover, nav a.current {
 
 #infoBox .projectsBox:hover img {
 	border-radius: 5px;
+}
+/**/
+#infoBox .contactHouse {
+    color: #eebd04;
+    text-shadow: 1px 1px 0 #fff !important;
+}
+
+#infoBox .contact {
+	background: url(images/aboutbg.png) repeat;
+	color: #222;
+}
+
+#infoBox .contact h2 {
+	background: url(images/contactme.png);
+	text-shadow: none;
+	box-shadow: none;
+}
+
+#infoBox .contact h4 {
+	color: #eebd04;
+}
+
+#infoBox .contact img {
+	height: 75%;
+	position: absolute;
+	right: 0;
+	margin: 20px;
+	border-radius: 25%;
+}
+
+#infoBox .contact article {
+	width: 50%;
+	padding: 20px;
+}
+
+#infoBox .contact article p {
+	margin-bottom: 15px;
+	color: white;
+}
+
+#infoBox .contact article p:last-child {
+	margin-bottom: 0;
 }
 
 /* Intro */
@@ -999,136 +999,96 @@ nav a:hover, nav a.current {
 
 #infoBox .intro .box#tabsIcon .icon {
 	background-image: url(images/tabsicon.png);
-} 
-
+}
 /* End */
 
-/* IE Page */
-
-body.ie {
-	overflow: auto;
-}
-
-#container {
-	margin: 50px auto 0;
-	width: 960px;
-	font-family: helvetica, arial;
-	position: relative;
-	font-size: 14px;
-}
-
-#container strong {
-	font-weight: bold;
-}
-
-#container h1 {
-	font-size: 68px;
-	font-weight: bold;
-	line-height: 76px;
-}
-
-#container h3 {
-	font-size: 26px;
-	color: #454545;
-}
-
-#container .me {
-	width: 32px;
-	height: 32px;
-	background: url(images/walkingMe.png) no-repeat 0 0;
-	position: absolute;	right: 310px;
-	top: 85px;
-}
-
-.ie #contactMeIE {
-	position: relative;
-}
-
-.ie #mysocial a {
-	background: #222 !important;
-}
-
 /* The dots/bullets/indicators */
-.dot {
+.aboutTabs, .skillsTabs, .expTabs  {
   cursor:pointer;
   height: 30px;
   width: 105px;
   display: inline-block;
   transition: background-color 0.6s ease;	
 }
-	
 
-.dot.me {
-	background: url(images/tabs.png);
-	text-align: center;
-}
-
-.dot.rs3 {
-	background: url(images/tabs.png);
-	text-align: center;
-}
-
-.dot.osrs {
+.aboutTabs.me, .aboutTabs.rs3, .aboutTabs.osrs, .skillsTabs.tskills, .skillsTabs.pskills, .expTabs.ed, .expTabs.we1, .expTabs.we2, .expTabs.we3  {
 	background: url(images/tabs.png);
 	text-align: center;
 }
 	
-.active, .dot:hover {
+.active, .aboutTabs:hover, .skillsTabs:hover, .expTabs:hover {
   background: url(images/activetabs.png);
 }
+/* End */
+
+/* Sidebar */
+#moduleshow, #guestshow, #cobrashow, #gamesshow, #formshow { 
+    margin: 0px auto; 
+    position: relative; 
+    width: 650px; 
+    height: 365px; 
+    padding: 10px; 
+    box-shadow: 0 0 20px rgba(0,0,0,0.4); 
+}
+
+#moduleshow > div, #guestshow > div, #cobrashow > div, #gamesshow > div, #formshow > div  { 
+    position: absolute; 
+    top: 10px; 
+    left: 10px; 
+    right: 10px; 
+    bottom: 10px; 
+}
+
+.sideSpec, .sideGuest, .sideChat, .sideCam, .sideVideo, .sideForm {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background: url(images/aboutbg.png);
+    overflow-x: hidden;
+    transition: 0.5s;		
+}
+
+.sideSpec .closebtn, .sideGuest .closebtn, .sideChat .closebtn, .sideCam .closebtn, .sideVideo .closebtn, .sideForm .closebtn  {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    color: white;
 	
-.dot2 {
-  cursor:pointer;
-  height: 30px;
-  width: 105px;
-  display: inline-block;
-  transition: background-color 0.6s ease;	
-}
-	
-
-.dot2.me {
-	background: url(images/tabs.png);
-	text-align: center;
 }
 
-.dot2.rs {
-	background: url(images/tabs.png);
-	text-align: center;
-}	
-	
-.active, .dot2:hover {
-  background: url(images/activetabs.png);
-}
-	
-.dot3 {
-  cursor:pointer;
-  height: 30px;
-  width: 105px;
-  display: inline-block;
-  transition: background-color 0.6s ease;	
-}
-	
-
-.dot3.ed {
-	background: url(images/tabs.png);
-	text-align: center;
+#side-scroll {
+  width: 100vw;
+  height: 100vh;
 }
 
-.dot3.we1 {
-	background: url(images/tabs.png);
-	text-align: center;
+.detail-view {
+  margin: 5rem auto;
+  padding: 1rem;
+  max-width: 55rem;
+  font-size: 1.3rem;
+  line-height: 1.5;
 }
-
-.dot3.we2 {
-	background: url(images/tabs.png);
-	text-align: center;
+.detail-view h3 {
+  margin: 1rem 0;
 }
-
-.dot3.we3 {
-	background: url(images/tabs.png);
-	text-align: center;
+.detail-view blockquote {
+  font-style: italic;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  line-height: 1.2;
 }
-
-.active, .dot3:hover {
-  background: url(images/activetabs.png);
+.detail-view p {
+  margin-bottom: 2em;
+  font-weight: 100;
+  color: white;	
 }
+.detail-view ul {
+  margin-top: 2em;
+}		
+/* End */

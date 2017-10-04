@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
 {% include head.html %}
-
-  <body onload="loadProfileExchange()">
-    {% include loader.html %}
-    {% include navigation.html %}
-    {{ content }}
-    {% include wrapper.html %}
-    {% include help.html %}
-  </body>
+	<body onload="loadProfileExchange()">
+		{% include loader.html %}
+		{% include navigation.html %}
+		{% include chatbox.html %}
+		{% include minimap.html %}
+		{{ content }}
+		{% include wrapper.html %}
+		{% include help.html %}
+		{% include sideview.html %}
+	</body>
 </html>

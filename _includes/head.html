@@ -1,43 +1,43 @@
- <head>
-	<title>Faser Parvez - Profile Exchange</title>
-	<meta property="og:title" content="Profile Exchange"/>	
-	<meta name="description" content="Site that shows my profile and work"/>
-	<meta property="og:image" content="favicon.png" />
-	<link rel="SHORTCUT ICON" href="favicon.png">
+	<head>
+		<title>Faser Parvez - Profile Exchange</title>
+		<meta property="og:title" content="Profile Exchange"/>	
+		<meta name="description" content="Site that shows my profile and work"/>
+		<meta property="og:image" content="favicon.png" />
+		<link rel="SHORTCUT ICON" href="favicon.png">
 		
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="author" content="Faser Parvez" />
-	<meta name="theme-color" content="#1C2C34" />
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="author" content="Faser Parvez" />
+		<meta name="theme-color" content="#1C2C34" />
 		
-	<link rel="icon" type="image/png" sizes="192x192" href="favicon.png" />
-	<link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
-	<link rel="icon" type="image/png" sizes="96x96" href="favicon.png" />
-	<link rel="icon" type="image/png" sizes="16x16" href="favicon.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="favicon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
+		<link rel="icon" type="image/png" sizes="96x96" href="favicon.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="favicon.png" />
 		
-	<!-- Styles -->
-	<link type="text/css" rel="stylesheet" href="reset.css" />    
-	<link type="text/css" rel="stylesheet" href="main.css" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">	
+		<!-- Styles -->
+		<link type="text/css" rel="stylesheet" href="clear.css" />    
+		<link type="text/css" rel="stylesheet" href="main.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">	
 		
-	<!-- Scripts -->
-	<script src="scripts/jquery-1.6.3.min.js" type="text/javascript"></script>
-	<script src="scripts/jquery.spritely-0.6.js" type="text/javascript"></script>	
-	<script src="scripts/info.js" type="text/javascript"></script>  
-	<script src="scripts/index.js" type="text/javascript"></script>
+		<!-- Scripts -->
+		<script src="scripts/jquery-1.6.3.min.js" type="text/javascript"></script>
+		<script src="scripts/jquery.spritely-0.6.js" type="text/javascript"></script>	
+		<script src="scripts/info.js" type="text/javascript"></script>  
+			<script src="scripts/index.js" type="text/javascript"></script>
+		<script src="scripts/slideshow.js" type="text/javascript"></script>
 		
-	<script type="text/javascript">	
-			
-		$(document).ready(function(){
-			$('#loadScreen .me').sprite({fps: 10, no_of_frames: 10}).spState(1);
-			var game = new Game();
-		});	
-		function loadProfileExchange() {
-			$('html, body').animate({scrollTop: 0});
-			$('#splashScreen').fadeOut(1000, function(){
-				$(this).remove();
-			})
-		}		
-	</script>
-  </head>
+		<script type="text/javascript">				
+			$(document).ready(function(){
+				$('#loadScreen .me').sprite({fps: 10, no_of_frames: 10}).spState(1);
+				var playrs = new PlayRS();
+			});	
+			function loadProfileExchange() {
+				$('html, body').animate({scrollTop: 0});
+				$('#splashScreen').fadeOut(1000, function(){
+					$(this).remove();
+				})
+			}		
+		</script>
+	</head>
